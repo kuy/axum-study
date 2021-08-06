@@ -95,6 +95,7 @@ name = "database"
 version = "0.0.0"
 dependencies = [
  "async-trait",
+ "models",
  "repository",
 ]
 
@@ -542,6 +543,7 @@ name = "repository"
 version = "0.0.0"
 dependencies = [
  "async-trait",
+ "models",
 ]
 
 [[package]]
@@ -841,6 +843,7 @@ name = "usecases"
 version = "0.0.0"
 dependencies = [
  "async-trait",
+ "models",
  "repository",
 ]
 

@@ -1,4 +1,4 @@
-use repository::{Beans, ListBeansRepository};
+use repository::ListBeansRepository;
 
 pub struct BeansUsecase<R>
 where
@@ -15,7 +15,13 @@ where
         Self { beans }
     }
 
-    pub async fn list(&self) -> Vec<Beans> {
-        self.beans.get_all().await
+    pub async fn list(&self) -> String {
+        let beans = self.beans.get_all().await;
+
+        beans
+            .into_iter()
+            .map(|b| b.name.to_string())
+            .reduce(|acc, b| format!("{}, {}", acc, b))
+            .unwrap_or("<Nothing>".into())
     }
 }
