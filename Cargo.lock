@@ -550,7 +550,6 @@ version = "0.0.0"
 dependencies = [
  "axum",
  "database",
- "http",
  "hyper",
  "tokio",
  "tower",
