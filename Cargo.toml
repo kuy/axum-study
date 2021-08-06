@@ -1,0 +1,2 @@
+[workspace]
+members = ["database", "models", "repository", "rest", "usecases"]
