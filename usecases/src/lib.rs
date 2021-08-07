@@ -1,27 +1,26 @@
+use presenter::BeansPresenter;
 use repository::ListBeansRepository;
 
-pub struct BeansUsecase<R>
+pub struct BeansUsecase<R, V>
 where
     R: ListBeansRepository,
+    V: BeansPresenter,
 {
-    beans: R,
+    repo: R,
+    view: V,
 }
 
-impl<R> BeansUsecase<R>
+impl<R, V> BeansUsecase<R, V>
 where
     R: ListBeansRepository,
+    V: BeansPresenter,
 {
-    pub fn new(beans: R) -> Self {
-        Self { beans }
+    pub fn new(repo: R, view: V) -> Self {
+        Self { repo, view }
     }
 
-    pub async fn list(&self) -> String {
-        let beans = self.beans.get_all().await;
-
-        beans
-            .into_iter()
-            .map(|b| b.name.to_string())
-            .reduce(|acc, b| format!("{}, {}", acc, b))
-            .unwrap_or("<Nothing>".into())
+    pub async fn list(&mut self) {
+        let beans = self.repo.get_all().await;
+        self.view.render_list(beans);
     }
 }

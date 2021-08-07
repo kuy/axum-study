@@ -2,6 +2,7 @@ use axum::prelude::*;
 use std::net::SocketAddr;
 
 mod handlers;
+mod views;
 
 #[tokio::main]
 async fn main() {
