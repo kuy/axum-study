@@ -1,5 +1,5 @@
 use models::Beans;
 
 pub trait BeansPresenter {
-    fn render_list(&mut self, beans: Vec<Beans>);
+    fn render_list(&self, beans: Vec<Beans>);
 }

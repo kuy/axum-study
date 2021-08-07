@@ -19,7 +19,7 @@ where
         Self { repo, view }
     }
 
-    pub async fn list(&mut self) {
+    pub async fn list(&self) {
         let beans = self.repo.get_all().await;
         self.view.render_list(beans);
     }
