@@ -1,8 +1,0 @@
-[package]
-name = "presenter"
-version = "0.0.0"
-edition = "2018"
-
-[dependencies]
-async-trait = "0.1.51"
-models = { path = "../models" }

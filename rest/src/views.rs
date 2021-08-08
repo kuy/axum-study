@@ -1,5 +1,5 @@
 use crossbeam_channel::Sender;
-use presenter::BeansPresenter;
+use usecases::ports;
 
 pub struct BeansRenderer {
     sender: Sender<String>,
@@ -11,7 +11,7 @@ impl BeansRenderer {
     }
 }
 
-impl BeansPresenter for BeansRenderer {
+impl ports::BeansPresenter for BeansRenderer {
     fn render_list(&self, beans: Vec<models::Beans>) {
         let content = beans
             .into_iter()

@@ -1,10 +1,9 @@
-use presenter::BeansPresenter;
-use repository::ListBeansRepository;
+pub mod ports;
 
 pub struct BeansUsecase<R, V>
 where
-    R: ListBeansRepository,
-    V: BeansPresenter,
+    R: ports::ListBeansRepository,
+    V: ports::BeansPresenter,
 {
     repo: R,
     view: V,
@@ -12,8 +11,8 @@ where
 
 impl<R, V> BeansUsecase<R, V>
 where
-    R: ListBeansRepository,
-    V: BeansPresenter,
+    R: ports::ListBeansRepository,
+    V: ports::BeansPresenter,
 {
     pub fn new(repo: R, view: V) -> Self {
         Self { repo, view }

@@ -10,7 +10,7 @@ pub fn routes() -> BoxRoute<Body> {
 }
 
 async fn index(sender: Sender<String>) {
-    let store = database::BeansInMemory {};
+    let store = repository::BeansInMemory {};
     let view = views::BeansRenderer::new(sender);
     let usecase = BeansUsecase::new(store, view);
     usecase.list().await;

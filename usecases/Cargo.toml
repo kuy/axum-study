@@ -6,5 +6,3 @@ edition = "2018"
 [dependencies]
 async-trait = "0.1.51"
 models = { path = "../models" }
-presenter = { path = "../presenter" }
-repository = { path = "../repository" }
