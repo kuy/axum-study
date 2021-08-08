@@ -10,9 +10,9 @@ pub fn routes() -> BoxRoute<Body> {
 }
 
 async fn index(sender: Sender<String>) {
-    let store = repository::BeansInMemory {};
+    let gateway = gateway::BeansGateway::new();
     let view = views::BeansRenderer::new(sender);
-    let usecase = BeansUsecase::new(store, view);
+    let usecase = BeansUsecase::new(gateway, view);
     usecase.list().await;
 }
 

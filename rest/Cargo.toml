@@ -12,6 +12,6 @@ tokio = { version = "1.9.0", features = ["full"] }
 tracing = "0.1"
 tracing-subscriber = "0.2"
 tower = "0.4.8"
+gateway = { path = "../gateway" }
 models = { path = "../models" }
-repository = { path = "../repository" }
 usecases = { path = "../usecases" }

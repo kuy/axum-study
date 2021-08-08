@@ -11,7 +11,7 @@ impl BeansRenderer {
     }
 }
 
-impl ports::BeansPresenter for BeansRenderer {
+impl ports::BeansOutputPort for BeansRenderer {
     fn render_list(&self, beans: Vec<models::Beans>) {
         let content = beans
             .into_iter()

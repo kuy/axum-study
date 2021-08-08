@@ -1,5 +1,5 @@
 [package]
-name = "repository"
+name = "gateway"
 version = "0.0.0"
 edition = "2018"
 
@@ -7,3 +7,4 @@ edition = "2018"
 async-trait = "0.1.51"
 models = { path = "../models" }
 usecases = { path = "../usecases" }
+persistence = { path = "../persistence" }
