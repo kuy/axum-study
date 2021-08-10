@@ -1,4 +1,7 @@
+extern crate dotenv;
+
 use axum::prelude::*;
+use dotenv::dotenv;
 use std::net::SocketAddr;
 
 mod handlers;
@@ -7,6 +10,7 @@ mod views;
 #[tokio::main]
 async fn main() {
     tracing_subscriber::fmt::init();
+    dotenv().ok();
 
     let app = route("/", any(handlers::not_found)).nest("/beans", handlers::beans::routes());
 

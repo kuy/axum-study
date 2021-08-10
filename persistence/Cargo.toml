@@ -3,4 +3,12 @@ name = "persistence"
 version = "0.0.0"
 edition = "2018"
 
+[features]
+default = ["memory"]
+memory = []
+postgres = ["diesel", "chrono", "dotenv"]
+
 [dependencies]
+chrono = { version = "0.4.19", optional = true }
+diesel = { version = "1.4.7", features = ["postgres", "chrono"], optional = true }
+dotenv = { version = "0.15.0", optional = true }

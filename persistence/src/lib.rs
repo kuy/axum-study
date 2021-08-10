@@ -1,21 +1,24 @@
-pub struct InMemory;
+#[cfg(feature = "memory")]
+mod memory;
 
-impl InMemory {
-    pub fn get_all(&self) -> Vec<Beans> {
-        vec![
-            Beans {
-                id: 1,
-                name: "Kangocho AA".into(),
-                country: "Kenya".into(),
-            },
-            Beans {
-                id: 2,
-                name: "Amedera".into(),
-                country: "Ethiopia".into(),
-            },
-        ]
-    }
-}
+#[cfg(feature = "memory")]
+pub use memory::Memory;
+
+#[cfg(feature = "postgres")]
+#[macro_use]
+extern crate diesel;
+
+#[cfg(feature = "postgres")]
+extern crate dotenv;
+
+#[cfg(feature = "postgres")]
+mod postgres;
+
+#[cfg(feature = "postgres")]
+pub use postgres::PostgresDatabase;
+
+#[cfg(feature = "postgres")]
+mod schema;
 
 pub struct Beans {
     pub id: i32,

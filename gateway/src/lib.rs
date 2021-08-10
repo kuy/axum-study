@@ -1,21 +1,23 @@
 use async_trait::async_trait;
-use persistence::InMemory;
+use persistence::PostgresDatabase;
 use usecases::ports::ListBeansInputPort;
 
 pub struct BeansGateway {
-    db: InMemory,
+    db: PostgresDatabase,
 }
 
 impl BeansGateway {
     pub fn new() -> Self {
-        Self { db: InMemory {} }
+        Self {
+            db: PostgresDatabase {},
+        }
     }
 }
 
 #[async_trait]
 impl ListBeansInputPort for BeansGateway {
     async fn get_all(&self) -> Vec<models::Beans> {
-        self.db.get_all().into_iter().map(convert).collect()
+        self.db.get_all().await.into_iter().map(convert).collect()
     }
 }
 

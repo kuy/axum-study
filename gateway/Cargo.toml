@@ -7,4 +7,4 @@ edition = "2018"
 async-trait = "0.1.51"
 models = { path = "../models" }
 usecases = { path = "../usecases" }
-persistence = { path = "../persistence" }
+persistence = { path = "../persistence", features = ["postgres"] }
